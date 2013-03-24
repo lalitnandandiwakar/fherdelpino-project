@@ -1,0 +1,11 @@
+- Las strings nunca cambian, cuando concatenas realmente haces mas objetos
+- si creas 2 strings con el mismo contenido, la stack va a apuntar a la misma heap
+
+LITERALES
+-Los de tipo entero (byte,short,int,long) hacen que quepa (borra los bits menos significativos)
+-Los de punto flotante (float,double) marca error (borra los decimales menos significativos)
+
+dudas de string en analisis de gramaticas
+
+
+*las variables tienen 4 etapas de inicialización, incluso hay unas antes del constructor, investiga cuales son

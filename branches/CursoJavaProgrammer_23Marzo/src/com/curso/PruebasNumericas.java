@@ -11,6 +11,8 @@ public class PruebasNumericas {
 		
 		sumad = d1 + 5.2;
 		
+		float f2 = 124; // si lo permite aguas
+		
 		
 		System.out.println(sumad);
 	}

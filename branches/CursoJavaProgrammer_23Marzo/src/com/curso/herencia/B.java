@@ -5,4 +5,13 @@ public class B extends A {
 		System.out.println("B");
 		return null;
 	}
+	
+	void m1() {
+		System.out.println("B.m1");
+	}
+	
+	int m4() {
+		System.out.println("B.m4");
+		return 0;
+	}
 }

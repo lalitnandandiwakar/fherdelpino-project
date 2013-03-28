@@ -5,4 +5,8 @@ public class C extends B {
 		System.out.println("C");
 		return null;
 	}
+	
+	void m3() {
+		System.out.println("C.m3");
+	}
 }

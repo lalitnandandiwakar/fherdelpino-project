@@ -5,18 +5,18 @@ public class PruebasString {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	static public void main(String[] args) {
 		String s = "hola";
 		String t = "hol";
 
 		String v = t + "a";
 
-		System.out.println(s == v);
+		System.out.println(s == v); //falso
 
 		String a = "hola";
 		String b = "hol" + "a";
 
-		System.out.println(a == b);
+		System.out.println(a == b); //verdadero
 
 		String m = "hola";
 		String n = "hol";

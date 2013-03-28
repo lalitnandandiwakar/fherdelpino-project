@@ -11,3 +11,6 @@ dudas de string en analisis de gramaticas
 *las variables tienen 4 etapas de inicialización, incluso hay unas antes del constructor, investiga cuales son
 
 *las cuatro etapas de la inicialización, espacio en memoria-> valores por default
+
+
+pregunta por el String... args

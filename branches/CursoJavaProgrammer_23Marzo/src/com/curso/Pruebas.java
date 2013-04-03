@@ -9,7 +9,7 @@ public class Pruebas {
 	 */
 	public static void main(String[] args) {
 		int hex = 0x10;
-		long l = 35;
+		long l = 35;             // aqui entra sin problemas
 		long l2 = 35000000000L; //si es mas grande de lo que int puede abarcar, necesitas cambiar la literal a L
 		
 		System.out.println(hex);

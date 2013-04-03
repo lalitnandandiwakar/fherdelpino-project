@@ -20,7 +20,7 @@ public class Prueba {
 		System.out.println(s[0]);
 		
 		char caracter[][] = new char[2][];
-		System.out.println(caracter[0]);
+		System.out.println(caracter[0]); //Null pointer exception
 		
 		
 		

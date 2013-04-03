@@ -9,4 +9,10 @@ public class C extends B {
 	void m3() {
 		System.out.println("C.m3");
 	}
+	
+	void prueba() {
+		prueba = 1;
+		A a = new A();
+		a.prueba = 1;
+	}
 }

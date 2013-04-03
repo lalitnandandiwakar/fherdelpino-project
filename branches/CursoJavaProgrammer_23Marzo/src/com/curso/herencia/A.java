@@ -1,6 +1,9 @@
 package com.curso.herencia;
 
 public class A {
+	
+	protected int prueba;
+	
 	A m() {
 		System.out.println("A");
 		return null;

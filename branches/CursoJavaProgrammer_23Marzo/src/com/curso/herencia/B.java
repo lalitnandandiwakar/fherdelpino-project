@@ -14,4 +14,10 @@ public class B extends A {
 		System.out.println("B.m4");
 		return 0;
 	}
+	
+	void prueba() {
+		prueba = 1;
+		A a = new A();
+		a.prueba = 1;
+	}
 }

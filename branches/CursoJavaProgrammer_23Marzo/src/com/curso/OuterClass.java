@@ -4,7 +4,16 @@ public class OuterClass {
 	public int x = 0;
 
 	static class StaticNestedClass {
-
+			void dynamicMethod() {
+				//TODO LLAMAME
+				class staticClass {
+					
+				}
+			}
+			
+			static void staticMethod() {
+				//TODO: LLAMAME
+			}
 	} // end StaticNestedClass
 
 	class InnerClass {
@@ -17,13 +26,23 @@ public class OuterClass {
 		}
 	}// end InnerClass
 
+	interface InnerInterface {
+
+		enum A {
+			CUALQUIER_VALOR;
+
+		}
+	}
+
 	public void m1() {
 		class LocalClass {
-			public static final int x = 0; //puedes crear constantes, pero no estaticos
-			
-//			static void m() { no puedes crear nada estático en una local class
-//				
-//			}
+			public static final int x = 0; // puedes crear constantes, pero no
+											// estaticos
+
+			// static void m() { no puedes crear nada estático en una local
+			// class
+			//
+			// }
 			LocalClass(int y) {
 				System.out.println();
 			}

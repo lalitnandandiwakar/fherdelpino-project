@@ -19,14 +19,23 @@ public class TestInnerNested {
 	}
 
 	class Inner2 {
+		
+		final int intInner2 = 0;
+		
 		void m() {
-			
-			Inner i = new Inner();
-			class Local {
 
+			Inner i = new Inner(); // puedes invocar a la clase inner
+
+			class Local {
+				Inner i = new Inner(); //compila sin problemas
+				Nested n = new TestInnerNested.Nested();
+				
+				int n2 = intInner2;
 			}
 
 			Base b = new Base() {
+				Inner i = new Inner(); //compila sin problemas
+				Nested n = new TestInnerNested.Nested();
 
 				@Override
 				public void implementM() {

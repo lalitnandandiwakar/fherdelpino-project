@@ -13,6 +13,10 @@ public class A {
 		System.out.println("A.m1");
 	}
 	
+	void m1(String s) {
+		
+	}
+	
 	void m2() {
 		System.out.println("A.m2");
 	}

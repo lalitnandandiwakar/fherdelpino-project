@@ -7,7 +7,7 @@ import java.util.List;
 public class Pila {
 
 	public static void main(String[] args) {
-		List<Integer> lista = Arrays.asList(new Integer[] { 10, 2, 8, 2, 5, 11, 12 });
+		List<Integer> lista = Arrays.asList(new Integer[] { 10, 2, 8, 11, 5, 2, 12 });
 		sort(new LinkedList<Integer>(lista));
 
 	}
@@ -17,22 +17,42 @@ public class Pila {
 
 		// variables permitidas
 		LinkedList<Integer> listaDest = new LinkedList<Integer>();
-		Integer aux = Integer.MAX_VALUE;
+		Integer aux = listaOrigen.pop();
+		if (listaOrigen.peek() <= aux) {
+			listaDest.push(aux);aux = null;
+		} else {
+			listaDest.push(listaOrigen.pop());
+			listaOrigen.push(aux);aux = null;
+		}
 
 		while (!listaOrigen.isEmpty()) {
+			aux = listaOrigen.pop();
 
-			if (listaOrigen.peek() <= aux) {
-				aux = listaOrigen.pop();
-				listaDest.push(aux);
-			} else {
-				aux = listaDest.pop();				
+			if (aux > (listaOrigen.isEmpty() ? Integer.MIN_VALUE : listaOrigen.peek())) {
+				if (aux <= listaDest.peek()) {
+					listaDest.push(aux);aux = null;
+				} else {
+					listaOrigen.push(listaDest.pop());					
+					if (listaDest.isEmpty()) {
+						listaDest.push(aux); aux = null;
+					} else {
+						listaOrigen.push(aux);aux = null;
+					}
+				}
+			} else if (listaOrigen.peek() < listaDest.peek()){
 				listaDest.push(listaOrigen.pop());
-				listaDest.push(aux);
+				listaOrigen.push(aux);aux = null;
+			} else {
+				listaDest.push(aux); aux = null;
+				aux = listaOrigen.pop();
+				listaOrigen.push(listaDest.pop());
+				listaOrigen.push(aux); aux = null;
 			}
-		}
-		
-//		if(aux <=2)
-//			sort(listaDest);
+
+		} // end while
+
+		// if(aux <=2)
+		// sort(listaDest);
 
 		System.out.println(listaDest);
 	}

@@ -1,6 +1,9 @@
 package com.curso.genericos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -13,8 +16,8 @@ public class TestTypeSafety {
 	public static void main(String[] args) {
 		
 		List<Integer> lista = new ArrayList<Integer>();
-//		Collection coleccion = lista;
-//		
+		Collection coleccion = lista;
+//		ArrayList
 //		Iterator it = lista.iterator();
 		
 		for (Integer elemento: lista) {
@@ -28,5 +31,10 @@ public class TestTypeSafety {
 	
 	public static void printNames2(List<? super CheckingAccount> ceo) {
 		
+	}
+	
+	public static <T> int max(T x , T y) {
+		
+		return new Integer("1");
 	}
 }

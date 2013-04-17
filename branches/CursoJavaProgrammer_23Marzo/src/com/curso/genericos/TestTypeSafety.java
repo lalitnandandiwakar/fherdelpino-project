@@ -33,6 +33,10 @@ public class TestTypeSafety {
 		
 	}
 	
+	public <T> int max2(T x, T y ) {
+		return 0;		
+	}
+	
 	public static <T> int max(T x , T y) {
 		
 		return new Integer("1");

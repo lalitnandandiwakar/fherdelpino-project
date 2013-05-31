@@ -1,5 +1,7 @@
 package com.mp3.metadata;
 
+import javax.swing.JOptionPane;
+
 
 public class Main {
 
@@ -7,7 +9,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Rename r = new Rename("/home/delpinof/Music/pruebas3");
+		String s = JOptionPane.showInputDialog("Introduce la carpeta:"); 
+		Rename r = new Rename(s);
 		r.renameSongs();
 		
 	}

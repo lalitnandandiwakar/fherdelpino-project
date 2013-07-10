@@ -1,8 +1,5 @@
 package org.sound;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.sound.scale.Notes;
 import org.sound.scale.Scale;
 
@@ -14,16 +11,22 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		Notes[] analize = {Notes.F, Notes.G, Notes.A, Notes.A$, Notes.C, Notes.D};
+		Notes[] analize = {Notes.C, Notes.D, Notes.A$, Notes.F, Notes.G};
+		
+//		System.out.println(Utils.belongsTo(analize));
+		
+//		for (Notes n : Utils.belongsTo(analize))
+//		System.out.println(new Scale(n));
 		
 		
-		List<Notes> lista = new ArrayList<Notes>(Utils.belongsTo(analize));
-		for (Notes note : lista)
-		Logic.print4NotesChords(new Scale(note));
-		
+//		List<Notes> lista = new ArrayList<Notes>(Utils.belongsTo(analize));
+//		for (Notes note : lista)
+//		Logic.print4NotesChords(new Scale(note));
 		
 //		Utils.printAllScales();
-//		Chord3Notes chord = new Chord3Notes(Notes.C);
+		
+//		Utils.printAllScales();
+		Logic.print4NotesChords(new Scale(Notes.C));
 //		Utils.printValues(chord.getChord());
 
 

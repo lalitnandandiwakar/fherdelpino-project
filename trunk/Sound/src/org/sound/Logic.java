@@ -1,7 +1,6 @@
 package org.sound;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.sound.scale.Chord3Notes;
 import org.sound.scale.Chord4Notes;

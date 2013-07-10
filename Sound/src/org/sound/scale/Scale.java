@@ -68,6 +68,6 @@ public class Scale {
 		
 	@Override
 	public String toString() {
-		return scale.toString();
+		return baseNote + "-" + scale.toString();
 	}
 }

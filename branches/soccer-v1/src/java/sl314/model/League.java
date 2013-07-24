@@ -13,6 +13,12 @@ public class League {
     private String season;
     private String title;
     
+    /**
+     * 
+     * @param year
+     * @param season
+     * @param title 
+     */
     public League(int year, String season, String title) {
         this.year = year;
         this.season = season;

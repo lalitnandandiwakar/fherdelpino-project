@@ -31,8 +31,8 @@ public class Leagues {
             new League(2004, "Spring", "Soccer League (Spring '04)"),
             new League(2004, "Summer", "The summer of soccer ove 2004"),
             new League(2004, "Fall", "Fall Soccer League (2004)")};
-        leagues = new ArrayList<>(Arrays.asList(arrayLeague));
-        errors = new ArrayList<>();
+        leagues = new ArrayList<League>(Arrays.asList(arrayLeague));
+        errors = new ArrayList<String>();
     }
 
     public List<League> getAllLeagues() {

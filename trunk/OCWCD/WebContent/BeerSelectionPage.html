@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Beer Selection</title>
+</head>
+<body>
+	<h1>Beer selection page</h1>
+	<form method="post" action="SelectBeer.do">
+	<h3>Select beer characteristics</h3>
+		Color: <select name="color" size="1">
+			<option value="light">light</option>
+			<option value="amber">amber</option>
+			<option value="brown">brown</option>
+			<option value="dark">dark</option>
+		</select> 
+		<br><br>Can Sizes:<br>
+			<input type=checkbox name=size value="12oz"> 12 oz.<br>
+			<input type=checkbox name=size value="16oz"> 16 oz.<br>
+			<input type=checkbox name=size value="22oz"> 22 oz.<br>
+			<br>
+			<br> <input type="submit" />
+	</form>
+</body>
+</html>

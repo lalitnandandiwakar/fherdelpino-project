@@ -1,27 +1,20 @@
 package com.mp3.metadata;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.swing.JOptionPane;
-
-import org.cmc.music.metadata.MusicMetadataSet;
-import org.cmc.music.myid3.MyID3;
+import com.mp3.metadata.bean.SongSimpleMetadata;
 
 public class Rename {
 
 	private File rootFolder;
-	private static final String MP3 = ".mp3";
-	private static final String[] NOT_ALLOWED = { "/" };
-	private static final String[] TO_REPLACE = { "_" };
+	private static final String EXTENSION = ".mp3";
 
-	public Rename(String path) {
-		this(new File(path));
+	public void renameSongsInFolder(String folder) throws Exception {
+		renameSongsInFolder(new File(folder));
 	}
-	
-	public Rename(File f) {
-		rootFolder = f;
+
+	public void renameSongsInFolder(File folder) throws Exception {
+		rootFolder = folder;
 
 		String error = null;
 
@@ -32,99 +25,72 @@ public class Rename {
 			error = "is not a folder: " + rootFolder.getAbsolutePath();
 
 		if (error != null) {
-			JOptionPane.showMessageDialog(null, error, "Error",
-					JOptionPane.ERROR_MESSAGE);
-			System.exit(1);
+			throw new Exception(error);
 		}
+
+		renameSongs(folder);
 	}
 
-	public Set<File> renameSongs() {
-		
-		Set<File> innerFolders = new HashSet<File>();
-		
-		for (File f : rootFolder.listFiles()) {
-			
+	private void renameSongs(File folder) throws Exception {
+
+		for (File f : folder.listFiles()) {
+
 			if (f.isDirectory()) {
-				innerFolders.add(f);
+				renameSongs(f);
 				continue;
 			}
-				
-			String[] metadata;
-						
+
 			try {
-				metadata = getMetaData(f);
+				renameFile(f);
 			} catch (Exception e) {
-				System.err.println("Error for: " + f.getAbsolutePath());
-				e.printStackTrace();
-				continue;
-			}
-
-			if (metadata == null)
-				continue;
-
-			rename(f, metadata[0], metadata[1], metadata[2]);
-		}
-		
-		for(File f : innerFolders) {
-			int n = JOptionPane.showConfirmDialog(null, "Execute in " + f.getAbsolutePath() + "?");
-			switch (n) {
-			case 0:
-				new Rename(f).renameSongs();
-				break;
-			case 2:
-				System.exit(1);
+				System.err.println(e.getMessage());
 			}
 		}
-		
-		return innerFolders;
+
 	}
 
-	private void rename(File f, String path, String fileName, String album) {
-
-		File validate = new File(rootFolder + "/" + fileName);
-
-		// validate that the file don't exist already
-		if (validate.exists()) {
-			fileName = fileName.replace(MP3, album + MP3);
-		}
-
-		// validate invalid characters
-		for (int i = 0; i < NOT_ALLOWED.length; i++) {
-			fileName = fileName.replace(NOT_ALLOWED[i], TO_REPLACE[i]);
-		}
-
-		System.out.print(f.getName());
-		System.out.print(" --> ");
-		System.out.println(fileName);
-		boolean result = f.renameTo(new File(path + fileName));
-		System.out.println(result ? "Done!" : "Error!");
+	public void renameFile(String path) throws Exception {
+		this.renameFile(new File(path));
 	}
 
-	private String[] getMetaData(File f) throws Exception {
+	public void renameFile(File sourceFile) throws Exception {
 
-		MusicMetadataSet metaDataSet = new MyID3().read(f);
+		String error = null;
 
-		if (metaDataSet == null)
-			throw new Exception("There is no metadata for this file!");
+		if (!sourceFile.exists())
+			error = "dont exists!: " + sourceFile.getAbsolutePath();
 
-		StringBuilder path = new StringBuilder(f.getParentFile().getPath())
-				.append("/");
+		if (error != null)
+			throw new Exception(error);
 
-		String artist = metaDataSet.getSimplified().getArtist();
-		if (artist == null)
-			artist = metaDataSet.getSimplified().getBand();
-		StringBuilder fileName = new StringBuilder(artist);
-		fileName.append(" - ");
-		fileName.append(metaDataSet.getSimplified().getSongTitle()).append(MP3);
+		rootFolder = sourceFile.getParentFile();
 
-		if (f.getName().equals(fileName.toString()))
-			return null;
+		MetaDataBuilder mdb = new MetaDataBuilder();
+		SongSimpleMetadata song = mdb.getMetaData(sourceFile);
 
-		StringBuilder album = new StringBuilder("(");
-		album.append(metaDataSet.getSimplified().getAlbum());
-		album.append(")");
+		MetaDataConfiguration config = new MetaDataConfiguration();
+		String fileName = config.getFileName(song);
 
-		String[] ar = { path.toString(), fileName.toString(), album.toString() };
-		return ar;
+		String absoluteFileName = rootFolder + "\\" + fileName + EXTENSION;
+
+		if (!absoluteFileName.equals(sourceFile.getAbsolutePath())) {
+			// validate the file don't exist already
+			if (new File(absoluteFileName).exists()) {
+				absoluteFileName = absoluteFileName.replace(EXTENSION,
+						song.getAlbum() + EXTENSION);
+			}
+
+			File destFile = new File(absoluteFileName);
+
+			System.out.println(sourceFile.getName() + " --> " + destFile.getName());
+
+			boolean result = sourceFile.renameTo(destFile);
+
+			if (result)
+				System.out.println("Done!");
+			else
+				System.out.println("Error!");
+		}
+
 	}
 }

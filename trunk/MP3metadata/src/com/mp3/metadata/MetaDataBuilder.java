@@ -23,10 +23,12 @@ public class MetaDataBuilder {
 			artist = metaDataSet.getSimplified().getBand();
 		String title = metaDataSet.getSimplified().getSongTitle();
 		String album = metaDataSet.getSimplified().getAlbum();
+		Number track = metaDataSet.getSimplified().getTrackNumberNumeric();
 
 		song.setArtist(artist);
 		song.setAlbum(album);
 		song.setTitle(title);
+		song.setTrack(track.toString());
 
 		return song;
 	}

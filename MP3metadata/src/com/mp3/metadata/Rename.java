@@ -41,12 +41,24 @@ public class Rename {
 			}
 
 			try {
-				renameFile(f);
+//				preRename(f);
+				renameFile(f);				
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
 		}
 
+	}
+	
+	public void preRename(File sourceFile) throws Exception {
+		rootFolder = sourceFile.getParentFile();
+		MetaDataBuilder builder = new MetaDataBuilder();
+		SongSimpleMetadata md = builder.getMetaData(sourceFile);
+		String absoluteFileName = rootFolder + "\\" + md.getTrack() + EXTENSION;
+		File dest = new File(absoluteFileName);
+		boolean b = sourceFile.renameTo(dest);
+		if (!b)
+			System.err.println("Error:" + absoluteFileName);
 	}
 
 	public void renameFile(String path) throws Exception {
@@ -73,11 +85,13 @@ public class Rename {
 
 		String absoluteFileName = rootFolder + "\\" + fileName + EXTENSION;
 
+		//if the name is the same, do not change anything
 		if (!absoluteFileName.equals(sourceFile.getAbsolutePath())) {
-			// validate the file don't exist already
+			
+			// validate the new name file don't exist already in the folder
 			if (new File(absoluteFileName).exists()) {
-				absoluteFileName = absoluteFileName.replace(EXTENSION,
-						song.getAlbum() + EXTENSION);
+				fileName = config.getFileNameWithAlbum(song);
+				absoluteFileName = rootFolder + "\\" + fileName + EXTENSION;
 			}
 
 			File destFile = new File(absoluteFileName);
@@ -89,7 +103,7 @@ public class Rename {
 			if (result)
 				System.out.println("Done!");
 			else
-				System.out.println("Error!");
+				System.err.println("Error!");
 		}
 
 	}

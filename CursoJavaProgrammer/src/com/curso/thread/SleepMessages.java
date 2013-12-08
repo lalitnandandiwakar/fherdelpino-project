@@ -10,6 +10,7 @@ public class SleepMessages {
 			Thread.sleep(4000);
 			// Print a message
 			System.out.println(importantInfo[i]);
+			Thread.interrupted();
 		}
 	}
 }

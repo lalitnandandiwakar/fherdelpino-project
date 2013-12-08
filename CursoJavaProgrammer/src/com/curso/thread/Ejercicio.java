@@ -64,7 +64,6 @@ class MiEntero {
 	}
 
 	public synchronized void inc2() {
-//		synchronized (this) {
 			String tn = Thread.currentThread().getName();
 
 			if (tn.equals("Hilo1")) {
@@ -90,8 +89,6 @@ class MiEntero {
 			}
 			System.out.println(tn + ": " + i++);
 			notify();
-//		}//end synchronized
-
 	}
 
 	public int getI() {

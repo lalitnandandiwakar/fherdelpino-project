@@ -39,8 +39,10 @@ public class GetFileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/pdf");
-		InputStream is = getServletContext().getResourceAsStream(
-				"/delpinoDocs.pdf");
+		
+		String docPath = getServletContext().getInitParameter("delPinoDoc");
+		System.out.println(docPath);
+		InputStream is = getServletContext().getResourceAsStream(docPath);
 
 		int read = 0;
 		byte[] bytes = new byte[1024];

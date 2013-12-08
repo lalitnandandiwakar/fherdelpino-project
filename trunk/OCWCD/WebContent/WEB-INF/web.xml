@@ -9,6 +9,10 @@
     <param-name>adminEmail</param-name>
     <param-value>Context Param!</param-value>
   </context-param>
+   <context-param>
+    <param-name>delPinoDoc</param-name>
+    <param-value>/docs/delpinoDocs.pdf</param-value>
+  </context-param>
   <listener>
     <listener-class>com.example.listener.MyServletContextListener</listener-class>
   </listener>
@@ -39,7 +43,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetFileServlet</servlet-name>
-    <url-pattern>/GetFileServlet</url-pattern>
     <url-pattern>/GetFile.do</url-pattern>
   </servlet-mapping>
   <servlet>

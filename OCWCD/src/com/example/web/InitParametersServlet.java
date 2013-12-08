@@ -27,6 +27,7 @@ public class InitParametersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		out.println(getInitParameter("adminEmail")); //serlvet param
 		out.println(getServletConfig().getInitParameter("adminEmail"));
 		out.println(getServletContext().getInitParameter("adminEmail"));
 	}

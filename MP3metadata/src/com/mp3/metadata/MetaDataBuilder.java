@@ -28,7 +28,8 @@ public class MetaDataBuilder {
 		song.setArtist(artist);
 		song.setAlbum(album);
 		song.setTitle(title);
-		song.setTrack(track.toString());
+		if (track != null)
+			song.setTrack(track.toString());
 
 		return song;
 	}

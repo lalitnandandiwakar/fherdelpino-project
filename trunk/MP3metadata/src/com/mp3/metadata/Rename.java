@@ -54,7 +54,7 @@ public class Rename {
 		rootFolder = sourceFile.getParentFile();
 		MetaDataBuilder builder = new MetaDataBuilder();
 		SongSimpleMetadata md = builder.getMetaData(sourceFile);
-		String absoluteFileName = rootFolder + "\\" + md.getTrack() + EXTENSION;
+		String absoluteFileName = rootFolder + File.separator + md.getTrack() + EXTENSION;
 		File dest = new File(absoluteFileName);
 		boolean b = sourceFile.renameTo(dest);
 		if (!b)
@@ -83,7 +83,7 @@ public class Rename {
 		MetaDataConfiguration config = new MetaDataConfiguration();
 		String fileName = config.getFileName(song);
 
-		String absoluteFileName = rootFolder + "\\" + fileName + EXTENSION;
+		String absoluteFileName = rootFolder + File.separator + fileName + EXTENSION;
 
 		//if the name is the same, do not change anything
 		if (!absoluteFileName.equals(sourceFile.getAbsolutePath())) {
@@ -91,7 +91,7 @@ public class Rename {
 			// validate the new name file don't exist already in the folder
 			if (new File(absoluteFileName).exists()) {
 				fileName = config.getFileNameWithAlbum(song);
-				absoluteFileName = rootFolder + "\\" + fileName + EXTENSION;
+				absoluteFileName = rootFolder + File.separator + fileName + EXTENSION;
 			}
 
 			File destFile = new File(absoluteFileName);

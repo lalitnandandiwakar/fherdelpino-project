@@ -1,0 +1,10 @@
+<!-- Indices written at Tue, 16 Dec 2014 23:52:30 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 13 times in query history -->
+    <datastore-index kind="Greeting" ancestor="true" source="auto">
+        <property name="date" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>

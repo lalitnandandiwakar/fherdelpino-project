@@ -4,69 +4,69 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GenericDTO {
-	
-	private String entityKind;
-	private String kind;
-	private String name;
-	private Long id;
-	private String parent;	
-	private Map<String,String> properties;
-	
-	public GenericDTO(String kind,String name, Long id, String parent) {
-		this.kind = kind;
-		this.name = name;
-		this.id = id;
-		this.parent = parent;
-	}
 
-	public String getKind() {
-		return kind;
-	}
+    private String entityKind;
+    private String kind;
+    private String name;
+    private Long id;
+    private String parent;
+    private Map<String, String> properties;
 
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
+    public GenericDTO(String kind, String name, Long id, String parent) {
+	this.kind = kind;
+	this.name = name;
+	this.id = id;
+	this.parent = parent;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getKind() {
+	return kind;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setKind(String kind) {
+	this.kind = kind;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getName() {
+	return name;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getParent() {
-		return parent;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setParent(String parent) {
-		this.parent = parent;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public Map<String, String> getProperties() {
-		if (properties == null)
-			properties = new HashMap<String, String>();
-		return properties;
-	}
+    public String getParent() {
+	return parent;
+    }
 
-	public void setProperties(Map<String, String> properties) {
-		this.properties = properties;
-	}
+    public void setParent(String parent) {
+	this.parent = parent;
+    }
 
-	public String getEntityKind() {
-		return entityKind;
-	}
+    public Map<String, String> getProperties() {
+	if (properties == null)
+	    properties = new HashMap<String, String>();
+	return properties;
+    }
 
-	public void setEntityKind(String entityKind) {
-		this.entityKind = entityKind;
-	}
+    public void setProperties(Map<String, String> properties) {
+	this.properties = properties;
+    }
+
+    public String getEntityKind() {
+	return entityKind;
+    }
+
+    public void setEntityKind(String entityKind) {
+	this.entityKind = entityKind;
+    }
 
 }

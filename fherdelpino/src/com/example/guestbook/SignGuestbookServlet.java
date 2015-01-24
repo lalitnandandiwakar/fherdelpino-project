@@ -22,53 +22,50 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SignGuestbookServlet extends HttpServlet {
-	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-		String guestbookName = req.getParameter("guestbookName");
+	String guestbookName = req.getParameter("guestbookName");
 
-		if (guestbookName.equals(Constants.GUESTBOOK_DEFAULT)) {
-			insertDataStore(req);
-			resp.sendRedirect("/guestbook/guestbook.jsp?guestbookName=" + guestbookName);
-		} else if (guestbookName.equals(Constants.GUESTBOOK_JDO)) {
-			insertJDODataStore(req);
-			resp.sendRedirect("/guestbook/guestbookJDO.jsp?guestbookName=" + guestbookName);
-		}
+	if (guestbookName.equals(Constants.GUESTBOOK_DEFAULT)) {
+	    insertDataStore(req);
+	    resp.sendRedirect("/guestbook/guestbook.jsp?guestbookName=" + guestbookName);
+	} else if (guestbookName.equals(Constants.GUESTBOOK_JDO)) {
+	    insertJDODataStore(req);
+	    resp.sendRedirect("/guestbook/guestbookJDO.jsp?guestbookName=" + guestbookName);
 	}
+    }
 
-	private void insertDataStore(HttpServletRequest req) {
+    private void insertDataStore(HttpServletRequest req) {
 
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
+	UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();
 
-		String guestbookName = req.getParameter("guestbookName");
-		Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
-		String content = req.getParameter("content");
-		Date date = new Date();
-		Entity greeting = new Entity("Greeting", guestbookKey);
-		greeting.setProperty("user", user);
-		greeting.setProperty("date", date);
-		greeting.setProperty("content", content);
+	String guestbookName = req.getParameter("guestbookName");
+	Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
+	String content = req.getParameter("content");
+	Date date = new Date();
+	Entity greeting = new Entity("Greeting", guestbookKey);
+	greeting.setProperty("user", user);
+	greeting.setProperty("date", date);
+	greeting.setProperty("content", content);
 
-		DatastoreService datastore = DatastoreServiceFactory
-				.getDatastoreService();
-		datastore.put(greeting);
+	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	datastore.put(greeting);
 
-	}
+    }
 
-	private void insertJDODataStore(HttpServletRequest req) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+    private void insertJDODataStore(HttpServletRequest req) {
+	PersistenceManager pm = PMF.get().getPersistenceManager();
 
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
+	UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();
 
-		Key key = KeyFactory.createKey(Greeting.class.getSimpleName(),
-				user.getEmail());
+	Key key = KeyFactory.createKey(Greeting.class.getSimpleName(), user.getEmail());
 
-		Greeting g = new Greeting(user, new Date(), req.getParameter("content"));
-		g.setKey(key);
-		DAO.create(g);
+	Greeting g = new Greeting(user, new Date(), req.getParameter("content"));
+	g.setKey(key);
+	DAO.create(g);
 
-	}
+    }
 }

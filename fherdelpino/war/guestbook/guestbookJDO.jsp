@@ -11,9 +11,16 @@
 <%@ page import="com.google.appengine.api.datastore.Key"%>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory"%>
 <%@ page import="com.google.appengine.api.datastore.Query"%>
+<%@ page import="com.example.util.*"%>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%
+	String guestbookName = request.getParameter("guestbookName");
+	if (guestbookName == null) {
+		guestbookName = Constants.GUESTBOOK_JDO;
+	}
+	pageContext.setAttribute("guestbookName", guestbookName);
+%>
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
@@ -35,7 +42,7 @@
 	});
 
 	function auto_refresh() {
-		$('#show').load('Chat.jsp');
+		$('#show').load('<%="Chat.jsp?guestbookName=" + guestbookName%>');
 	}
 
 	var refreshId = setInterval(auto_refresh, 3000);
@@ -45,11 +52,6 @@
 <body>
 
 	<%
-		String guestbookName = request.getParameter("guestbookName");
-		if (guestbookName == null) {
-			guestbookName = "default";
-		}
-		pageContext.setAttribute("guestbookName", guestbookName);
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if (user != null) {
@@ -57,32 +59,41 @@
 	%>
 
 	<p>
-		Hola, ${fn:escapeXml(user.nickname)}! (<a
-			href="<%=userService.createLogoutURL(request.getRequestURI())%>">log
-			out</a>.)
+		Hola, ${fn:escapeXml(user.nickname)}! <a
+			href="<%=userService.createLogoutURL(request.getRequestURI())%>"><button
+				type="button" class="btn btn-danger">Log out</button></a>
 	</p>
 	<%
 		} else {
 	%>
 	<p>
 		Primero! <a
-			href="<%=userService.createLoginURL(request.getRequestURI())%>">logueate</a>
-		para que aparezca tu nombre cuando escribas.
+			href="<%=userService.createLoginURL(request.getRequestURI())%>"><button
+				type="button" class="btn btn-success">Logueate</button></a> para que
+		aparezca tu nombre cuando escribas.
+
 	</p>
 	<%
 		}
 	%>
 	<BR>
-	
+
 	<form action="/sign" method="post">
-		<div>
-			<textarea name="content" rows="3" cols="60"></textarea>
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="submit">Enviar</button>
+					</span> <input type="text" name="content" class="form-control"
+						placeholder="Escribe...">
+				</div>
+			</div>
 		</div>
-		<div>
-			<input type="submit" value="Postear en Guestbook" />
-		</div>
+
 		<input type="hidden" name="guestbookName"
 			value="${fn:escapeXml(guestbookName)}" />
+
 	</form>
 
 	<div id="show"></div>

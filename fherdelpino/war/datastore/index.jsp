@@ -32,37 +32,43 @@
 <body>
 	<form action="/DataStoreInsert" method="post">
 		<div class="container-fluid">
-			<h1 class="page-header">DataStore testing</h1>
+			<h3 class="page-header">DataStore testing</h3>
 			<!-- 		<div class="jumbotron"> -->
-			<h3 class="page-header">Create key!</h3>
+			<h5 class="page-header">Entity!</h5>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon" id="sizing-addon3">Kind</span> <input
-					type="text" class="form-control" placeholder="Kind"
+					type="text" class="form-control" placeholder="TestEntity as example"
+					aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_ENTITY_KIND%>">
+			</div>
+			<h5 class="page-header">Create key!</h5>
+			<div class="input-group input-group-sm">
+				<span class="input-group-addon" id="sizing-addon3">Kind</span> <input
+					type="text" class="form-control" placeholder="Animal, Bebida_alcoholica"
 					aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_KIND%>">
 			</div>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon" id="sizing-addon3">Name</span> <input
-					type="text" class="form-control" placeholder="Name"
+					type="text" class="form-control" placeholder="Perro, Gato, Cerveza, Whisky"
 					aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_NAME%>">
 			</div>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon" id="sizing-addon3">Id</span> <input
-					type="text" class="form-control" placeholder="Id"
+					type="text" class="form-control" placeholder="Tiene que ser numerico"
 					aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_ID%>">
 			</div>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon" id="sizing-addon3">Parent</span> <input
-					type="text" class="form-control" placeholder="Parent"
+					type="text" class="form-control" placeholder="Este no lo he implementado por que no le entiendo..."
 					aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PARENT%>">
 			</div>
 			<!-- 		</div> -->
 
-			<h3 class="page-header">Properties!</h3>
+			<h5 class="page-header">Properties!</h5>
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Name</span> <input
-							type="text" class="form-control" placeholder="Name"
+							type="text" class="form-control" placeholder="Tamano"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_NAME + 1%>">
 					</div>
 					<!-- /input-group -->
@@ -71,7 +77,7 @@
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Value</span> <input
-							type="text" class="form-control" placeholder="Value"
+							type="text" class="form-control" placeholder="12"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_VALUE + 1%>">
 					</div>
 					<!-- /input-group -->
@@ -83,7 +89,7 @@
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Name</span> <input
-							type="text" class="form-control" placeholder="Name"
+							type="text" class="form-control" placeholder="Raza"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_NAME + 2%>">
 					</div>
 					<!-- /input-group -->
@@ -92,7 +98,7 @@
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Value</span> <input
-							type="text" class="form-control" placeholder="Value"
+							type="text" class="form-control" placeholder="Pastor aleman"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_VALUE + 2%>">
 					</div>
 					<!-- /input-group -->
@@ -104,7 +110,7 @@
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Name</span> <input
-							type="text" class="form-control" placeholder="Name"
+							type="text" class="form-control" placeholder="Marca"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_NAME + 3%>">
 					</div>
 					<!-- /input-group -->
@@ -113,7 +119,7 @@
 				<div class="col-lg-6">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon" id="sizing-addon3">Value</span> <input
-							type="text" class="form-control" placeholder="Value"
+							type="text" class="form-control" placeholder="Modelo"
 							aria-describedby="sizing-addon3" name="<%=FrontEndConstants.DATASTORE_PROP_VALUE + 3%>">
 					</div>
 					<!-- /input-group -->
@@ -125,8 +131,6 @@
 			<p>
 				<button type="submit" class="btn btn-success">Enviar</button>
 			</p>
-
-
 		</div>
 
 	</form>

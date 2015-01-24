@@ -2,6 +2,7 @@ package com.example.util;
 
 public interface FrontEndConstants {
 	
+	public String DATASTORE_ENTITY_KIND = "data_store_entity_kind";
 	public String DATASTORE_KIND = "data_store_kind";
 	public String DATASTORE_NAME = "data_store_name";
 	public String DATASTORE_ID = "data_store_id";

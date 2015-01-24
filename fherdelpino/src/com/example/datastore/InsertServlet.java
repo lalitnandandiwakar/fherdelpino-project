@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.datastore.dao.GenericDAO;
+import com.example.datastore.dto.GenericDTO;
 import com.example.util.FrontEndConstants;
 
 public class InsertServlet extends HttpServlet {
@@ -21,9 +23,19 @@ public class InsertServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String entityKind = req.getParameter(FrontEndConstants.DATASTORE_ENTITY_KIND);
 		String kind = req.getParameter(FrontEndConstants.DATASTORE_KIND);
 		String name = req.getParameter(FrontEndConstants.DATASTORE_NAME);
-		String id = req.getParameter(FrontEndConstants.DATASTORE_ID);
+		String idString = req.getParameter(FrontEndConstants.DATASTORE_ID);
+		Long id = null;
+		if (idString != null && !idString.isEmpty()) {
+			try {
+				id = Long.parseLong(idString);
+			} catch(NumberFormatException nfe) {
+				throw new RuntimeException("id must be numeric!");
+			}
+		}
+		
 		String parent = req.getParameter(FrontEndConstants.DATASTORE_PARENT);
 		Map<String, String> properties = new HashMap<String, String>();
 
@@ -37,7 +49,14 @@ public class InsertServlet extends HttpServlet {
 			i++;
 		}
 		
-		resp.sendRedirect("/_ah/admin/");
+		GenericDTO dto = new GenericDTO(kind,name,id,parent);
+		dto.setEntityKind(entityKind);
+		dto.setProperties(properties);
+		
+		GenericDAO dao = new GenericDAO();
+		dao.create(dto);
+		
+		resp.sendRedirect("https://console.developers.google.com/project/fherdelpino/datastore/query");
 
 	}
 

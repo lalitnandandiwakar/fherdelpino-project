@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<form action="/DataStoreInsert" method="post">
+	<form action="/datastore/DataStoreInsert" method="post">
 		<div class="container-fluid">
 			<h3 class="page-header">DataStore testing</h3>
 			<!-- 		<div class="jumbotron"> -->

@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.datastore.jdo.entities;
 
 import java.util.Date;
 

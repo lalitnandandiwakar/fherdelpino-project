@@ -1,8 +1,8 @@
 package com.example.guestbook;
 
-import com.example.entities.Greeting;
-import com.example.jdo.DAO;
-import com.example.jdo.PMF;
+import com.example.datastore.jdo.JdoDAO;
+import com.example.datastore.jdo.PMF;
+import com.example.datastore.jdo.entities.Greeting;
 import com.example.util.Constants;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -65,7 +65,8 @@ public class SignGuestbookServlet extends HttpServlet {
 
 	Greeting g = new Greeting(user, new Date(), req.getParameter("content"));
 	g.setKey(key);
-	DAO.create(g);
+	JdoDAO<Greeting> greetingDAO = new JdoDAO<Greeting>();
+	greetingDAO.create(g);
 
     }
 }

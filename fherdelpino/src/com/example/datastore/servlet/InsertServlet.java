@@ -1,4 +1,4 @@
-package com.example.datastore;
+package com.example.datastore.servlet;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class InsertServlet extends HttpServlet {
 	GenericDAO dao = new GenericDAO();
 	dao.create(dto);
 
-	resp.sendRedirect("https://console.developers.google.com/project/fherdelpino/datastore/query");
+	resp.sendRedirect("/_ah/admin");
 
     }
 }

@@ -8,8 +8,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.servlet.http.*;
 
-import com.example.entities.Greeting;
-import com.example.jdo.PMF;
+import com.example.datastore.jdo.PMF;
+import com.example.datastore.jdo.entities.Greeting;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;

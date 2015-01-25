@@ -1,4 +1,4 @@
-package com.example.jdo;
+package com.example.datastore.jdo;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

@@ -23,6 +23,10 @@ public class Employee {
 	@Persistent
 	private Date hireDate;
 
+	public Employee() {
+
+	}
+
 	public Employee(String firstName, String lastName, Date hireDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;

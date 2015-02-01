@@ -18,15 +18,30 @@
 <title>Employee</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link
+	href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/build/css/bootstrap-datetimepicker.css"
+	rel="stylesheet">
 
 <!-- Latest compiled and minified JavaScript -->
+<script type="text/javascript"
+	src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script
+	src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
+<!-- local javascript -->
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker1').datetimepicker();
+	});
+</script>
 </head>
 
 <body>
@@ -46,17 +61,21 @@
 					aria-describedby="sizing-addon3"
 					name="<%=FrontEndConstants.DATASTORE_EMPLOYEE_LAST_NAME%>">
 			</div>
+<!-- 			<div class="input-group input-group-sm"> -->
+<!-- 				<span class="input-group-addon" id="sizing-addon3">Hire Date</span> -->
+<!-- 				<input type="text" class="form-control" placeholder="Hire Date" -->
+<!-- 					aria-describedby="sizing-addon3" -->
+<%-- 					name="<%=FrontEndConstants.DATASTORE_EMPLOYEE_HIRE_DATE%>"> --%>
+<!-- 			</div> -->
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon" id="sizing-addon3">Hire Date</span>
-				<input type="text" class="form-control" placeholder="Hire Date"
-					aria-describedby="sizing-addon3"
-					name="<%=FrontEndConstants.DATASTORE_EMPLOYEE_HIRE_DATE%>">
+				<div class="input-group date" id="datetimepicker1">
+					<input type="text" class="form-control"
+						name="<%=FrontEndConstants.DATASTORE_EMPLOYEE_HIRE_DATE%>">
+					<span class="input-group-addon"><span
+						class="glyphicon glyphicon-calendar"></span> </span>
+				</div>
 			</div>
-<!-- 			<div class="input-group date" id="datetimepicker1"> -->
-<!-- 				<input type="text" class="form-control"> <span -->
-<!-- 					class="input-group-addon"><span -->
-<!-- 					class="glyphicon glyphicon-calendar"></span> </span> -->
-<!-- 			</div> -->
 			<br>
 			<p>
 				<button type="submit" class="btn btn-success">Enviar</button>

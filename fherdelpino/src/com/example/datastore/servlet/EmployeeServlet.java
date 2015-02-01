@@ -26,7 +26,7 @@ public class EmployeeServlet extends HttpServlet {
 				.getParameter(FrontEndConstants.DATASTORE_EMPLOYEE_HIRE_DATE);
 
 		SimpleDateFormat formatter = new SimpleDateFormat(
-				"EEEE, dd/MM/yyyy/hh:mm:ss");
+				"EEEE, dd/MM/yyyy");
 		Date parsedDate = null;
 		try {
 			parsedDate = formatter.parse(hireDate);

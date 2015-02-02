@@ -2,21 +2,11 @@ package com.example.datastore.jdo.entities;
 
 import java.util.Date;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Employee {
-
-    /**
-     * Use this for objects without entity group parents whose IDs should be
-     * generated automatically by the datastore.
-     */
-    @PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long id;
+public class Employee extends LongIdEntity {
 
     @Persistent
     private String firstName;
@@ -36,9 +26,6 @@ public class Employee {
 	this.lastName = lastName;
 	this.hireDate = hireDate;
     }
-
-    // Accessors for the fields. JDO doesn't use these, but your application
-    // does.
 
     public String getFirstName() {
 	return firstName;

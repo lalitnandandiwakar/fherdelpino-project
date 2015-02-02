@@ -7,15 +7,15 @@ import javax.jdo.PersistenceManager;
 import com.example.datastore.dao.DAO;
 
 public class JdoDAO<E> implements DAO<E> {
+    
+    private static PersistenceManager pm = PMF.get().getPersistenceManager();
 
     public static Object read(Object o, Object id) {
-	PersistenceManager pm = PMF.get().getPersistenceManager();
 	return pm.getObjectById(o.getClass(), id);
     }
 
     @Override
     public boolean create(E t) {
-	PersistenceManager pm = PMF.get().getPersistenceManager();
 
 	try {
 	    pm.makePersistent(t);
@@ -27,7 +27,7 @@ public class JdoDAO<E> implements DAO<E> {
 
     @Override
     public E read(E t) {
-	PersistenceManager pm = PMF.get().getPersistenceManager();
+	
 	return null;
     }
 

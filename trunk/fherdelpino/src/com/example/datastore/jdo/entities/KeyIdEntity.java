@@ -6,7 +6,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
-public abstract class KeyIdEntity {
+public abstract class KeyIdEntity implements Persistable {
 
 	/**
 	 * The key value includes the key of the entity group parent (if any) and

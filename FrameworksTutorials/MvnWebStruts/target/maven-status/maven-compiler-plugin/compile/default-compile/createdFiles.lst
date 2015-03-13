@@ -1,0 +1,5 @@
+org\apache\struts\helloworld\action\HelloWorldAction.class
+org\apache\struts\register\model\Person.class
+org\apache\struts\register\action\Register.class
+org\apache\struts\helloworld\model\MessageStore.class
+com\appspot\fherdelpino\HelloWorld.class

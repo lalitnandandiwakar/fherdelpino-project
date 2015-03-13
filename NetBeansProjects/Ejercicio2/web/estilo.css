@@ -1,0 +1,17 @@
+/* 
+    Document   : estilo
+    Created on : Jul 11, 2013, 7:50:16 PM
+    Author     : delpinof
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.colortr{
+    font-weight: bold;
+    font-size: 14;
+    background-color: red;
+}
+
